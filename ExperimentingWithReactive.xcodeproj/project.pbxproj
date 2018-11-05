@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		54F0BFA7E2958F33509FD4AA /* Pods_ExperimentingWithReactive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD149F38BFD4097DE6ACDD6 /* Pods_ExperimentingWithReactive.framework */; };
+		91030A00218FDEBB0079D259 /* CountriesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910309FF218FDEBB0079D259 /* CountriesDataSource.swift */; };
+		91030A04218FE4C10079D259 /* AddCountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91030A03218FE4C10079D259 /* AddCountryViewController.swift */; };
 		91D3F3EC218AF03C003F340D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D3F3EB218AF03C003F340D /* AppDelegate.swift */; };
 		91D3F3EE218AF03C003F340D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D3F3ED218AF03C003F340D /* ViewController.swift */; };
 		91D3F3F1218AF03C003F340D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D3F3EF218AF03C003F340D /* Main.storyboard */; };
@@ -17,6 +19,8 @@
 
 /* Begin PBXFileReference section */
 		3DEBBF27CBC4F3BA73CFD396 /* Pods-ExperimentingWithReactive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExperimentingWithReactive.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExperimentingWithReactive/Pods-ExperimentingWithReactive.debug.xcconfig"; sourceTree = "<group>"; };
+		910309FF218FDEBB0079D259 /* CountriesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesDataSource.swift; sourceTree = "<group>"; };
+		91030A03218FE4C10079D259 /* AddCountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCountryViewController.swift; sourceTree = "<group>"; };
 		91D3F3E8218AF03C003F340D /* ExperimentingWithReactive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExperimentingWithReactive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D3F3EB218AF03C003F340D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91D3F3ED218AF03C003F340D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -80,10 +84,12 @@
 			children = (
 				91D3F3EB218AF03C003F340D /* AppDelegate.swift */,
 				91D3F3ED218AF03C003F340D /* ViewController.swift */,
+				910309FF218FDEBB0079D259 /* CountriesDataSource.swift */,
 				91D3F3EF218AF03C003F340D /* Main.storyboard */,
 				91D3F3F2218AF03C003F340D /* Assets.xcassets */,
 				91D3F3F4218AF03C003F340D /* LaunchScreen.storyboard */,
 				91D3F3F7218AF03C003F340D /* Info.plist */,
+				91030A03218FE4C10079D259 /* AddCountryViewController.swift */,
 			);
 			path = ExperimentingWithReactive;
 			sourceTree = "<group>";
@@ -205,6 +211,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				91D3F3EE218AF03C003F340D /* ViewController.swift in Sources */,
+				91030A04218FE4C10079D259 /* AddCountryViewController.swift in Sources */,
+				91030A00218FDEBB0079D259 /* CountriesDataSource.swift in Sources */,
 				91D3F3EC218AF03C003F340D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
