@@ -47,7 +47,6 @@ class ViewController: UIViewController {
         priceLabel.reactive.text <~ priceProperty.map{String($0)}
         VATAmoutLabel.reactive.text <~ vatValueProperty.map{String($0)}
         totalAmount.reactive.text <~ totalProperty.map{String($0)}
-        print("Hello")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
