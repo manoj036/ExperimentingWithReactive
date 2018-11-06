@@ -12,9 +12,9 @@ final class CountriesDataSource: NSObject, UIPickerViewDelegate, UIPickerViewDat
     
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
+    
     var countries = [Country]()
-
+    
     func addCountry(name:String,vat:Float){
         let country = Country(entity: Country.entity(), insertInto: context)
         country.name = name

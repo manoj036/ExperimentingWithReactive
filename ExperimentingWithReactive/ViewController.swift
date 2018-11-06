@@ -22,9 +22,7 @@ class ViewController: UIViewController  {
     @IBOutlet weak var totalAmount: UILabel!
 
     let countriesDataSource = CountriesDataSource()
-//    var vatCountries = ["India","Japan","Bangladesh","Pakisthan","Brazil","Australia","United States"]
-//    var vatValues:[Float] = [25,32.11,35,35,34,28.5,21]
-//
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,11 +34,12 @@ class ViewController: UIViewController  {
         pickerView.dataSource = countriesDataSource
         pickerView.delegate = countriesDataSource
         
-        //initial values for properties
-        let initalPrice = priceSlider.value
-        
+        //see if pickerView contains any data
         if (pickerView.numberOfRows(inComponent: 0) > 0) {
+            //initial values for properties
             let initialVAT = countriesDataSource.countries[pickerView.selectedRow(inComponent: 0)].vat
+            let initalPrice = priceSlider.value
+            
             //Signals for properties
             let vatSignal = pickerView.reactive.selections
             let priceSignal = priceSlider.reactive.values

@@ -14,5 +14,5 @@ public class Country: NSManagedObject {
     
     @NSManaged public var name: String?
     @NSManaged public var vat: Float
-
+    
 }

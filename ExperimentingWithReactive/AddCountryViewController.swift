@@ -27,7 +27,6 @@ class AddCountryViewController: UITableViewController {
     
     @IBAction func cancelButton(_ sender: Any) {
         navigationController?.popViewController(animated: true)
-        
     }
     
     @IBAction func doneButton(_ sender: Any) {
@@ -53,8 +52,8 @@ class AddCountryViewController: UITableViewController {
         
         let property0 = Property.combineLatest(countryProperty, vatProperty).map {!(($0?.isEmpty)!||($1?.isEmpty)!)}
         let property1 = Property(initial: true, then: isVatValidSignal)
-        
         let enable = Property.combineLatest(property0, property1).map{$0 && $1}
+        
         doneOutlet.reactive.isEnabled <~ enable
         validLabel.reactive.isHidden <~ isVatValidSignal
     }
