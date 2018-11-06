@@ -10,6 +10,10 @@
 		54F0BFA7E2958F33509FD4AA /* Pods_ExperimentingWithReactive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD149F38BFD4097DE6ACDD6 /* Pods_ExperimentingWithReactive.framework */; };
 		91030A00218FDEBB0079D259 /* CountriesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910309FF218FDEBB0079D259 /* CountriesDataSource.swift */; };
 		91030A04218FE4C10079D259 /* AddCountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91030A03218FE4C10079D259 /* AddCountryViewController.swift */; };
+		91BDCA05219158A3003905E3 /* DeleteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BDCA04219158A3003905E3 /* DeleteTableViewController.swift */; };
+		91C1F11A2190486A00E03491 /* Country.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91C1F1182190486A00E03491 /* Country.xcdatamodeld */; };
+		91C1F12121904C6200E03491 /* Country+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C1F11F21904C6200E03491 /* Country+CoreDataProperties.swift */; };
+		91C1F12221904C6200E03491 /* Country+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C1F12021904C6200E03491 /* Country+CoreDataClass.swift */; };
 		91D3F3EC218AF03C003F340D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D3F3EB218AF03C003F340D /* AppDelegate.swift */; };
 		91D3F3EE218AF03C003F340D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D3F3ED218AF03C003F340D /* ViewController.swift */; };
 		91D3F3F1218AF03C003F340D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D3F3EF218AF03C003F340D /* Main.storyboard */; };
@@ -21,6 +25,10 @@
 		3DEBBF27CBC4F3BA73CFD396 /* Pods-ExperimentingWithReactive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExperimentingWithReactive.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExperimentingWithReactive/Pods-ExperimentingWithReactive.debug.xcconfig"; sourceTree = "<group>"; };
 		910309FF218FDEBB0079D259 /* CountriesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesDataSource.swift; sourceTree = "<group>"; };
 		91030A03218FE4C10079D259 /* AddCountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCountryViewController.swift; sourceTree = "<group>"; };
+		91BDCA04219158A3003905E3 /* DeleteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTableViewController.swift; sourceTree = "<group>"; };
+		91C1F1192190486A00E03491 /* Country.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Country.xcdatamodel; sourceTree = "<group>"; };
+		91C1F11F21904C6200E03491 /* Country+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Country+CoreDataProperties.swift"; path = "/Users/manoj.gubba/Desktop/IOS_Learning/ExperimentingWithReactive/ExperimentingWithReactive/Country+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		91C1F12021904C6200E03491 /* Country+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Country+CoreDataClass.swift"; path = "/Users/manoj.gubba/Desktop/IOS_Learning/ExperimentingWithReactive/ExperimentingWithReactive/Country+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		91D3F3E8218AF03C003F340D /* ExperimentingWithReactive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExperimentingWithReactive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D3F3EB218AF03C003F340D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91D3F3ED218AF03C003F340D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +90,8 @@
 		91D3F3EA218AF03C003F340D /* ExperimentingWithReactive */ = {
 			isa = PBXGroup;
 			children = (
+				91C1F12021904C6200E03491 /* Country+CoreDataClass.swift */,
+				91C1F11F21904C6200E03491 /* Country+CoreDataProperties.swift */,
 				91D3F3EB218AF03C003F340D /* AppDelegate.swift */,
 				91D3F3ED218AF03C003F340D /* ViewController.swift */,
 				910309FF218FDEBB0079D259 /* CountriesDataSource.swift */,
@@ -90,6 +100,8 @@
 				91D3F3F4218AF03C003F340D /* LaunchScreen.storyboard */,
 				91D3F3F7218AF03C003F340D /* Info.plist */,
 				91030A03218FE4C10079D259 /* AddCountryViewController.swift */,
+				91C1F1182190486A00E03491 /* Country.xcdatamodeld */,
+				91BDCA04219158A3003905E3 /* DeleteTableViewController.swift */,
 			);
 			path = ExperimentingWithReactive;
 			sourceTree = "<group>";
@@ -212,7 +224,11 @@
 			files = (
 				91D3F3EE218AF03C003F340D /* ViewController.swift in Sources */,
 				91030A04218FE4C10079D259 /* AddCountryViewController.swift in Sources */,
+				91C1F12121904C6200E03491 /* Country+CoreDataProperties.swift in Sources */,
 				91030A00218FDEBB0079D259 /* CountriesDataSource.swift in Sources */,
+				91BDCA05219158A3003905E3 /* DeleteTableViewController.swift in Sources */,
+				91C1F12221904C6200E03491 /* Country+CoreDataClass.swift in Sources */,
+				91C1F11A2190486A00E03491 /* Country.xcdatamodeld in Sources */,
 				91D3F3EC218AF03C003F340D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,6 +427,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		91C1F1182190486A00E03491 /* Country.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				91C1F1192190486A00E03491 /* Country.xcdatamodel */,
+			);
+			currentVersion = 91C1F1192190486A00E03491 /* Country.xcdatamodel */;
+			path = Country.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 91D3F3E0218AF03C003F340D /* Project object */;
 }

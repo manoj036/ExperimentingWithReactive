@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/manoj.gubba/Desktop/IOS_Learning/ExperimentingWithReactive/ExperimentingWithReactive/Country+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/manoj.gubba/Desktop/IOS_Learning/ExperimentingWithReactive/ExperimentingWithReactive/Country+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:ExperimentingWithReactive.xcodeproj">
    </FileRef>
    <FileRef

@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -41,7 +43,7 @@
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="v4V-vB-OnL">
                                         <rect key="frame" x="6" y="36" width="363" height="178"/>
                                     </slider>
-                                    <pickerView contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="dPC-gQ-uxK" customClass="VATPickerView" customModule="ExperimentingWithReactive" customModuleProvider="target">
+                                    <pickerView contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="dPC-gQ-uxK">
                                         <rect key="frame" x="8" y="213" width="359" height="177"/>
                                     </pickerView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="88Q-lI-fbq">
@@ -120,24 +122,32 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="ayC-As-JuZ">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="H5N-DG-O87">
-                            <connections>
-                                <action selector="addCountry:" destination="BYZ-38-t0r" id="AXw-oT-Sfe"/>
-                                <segue destination="ywH-6e-rXd" kind="show" id="eGL-uM-SvI"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="H5N-DG-O87">
+                                <connections>
+                                    <action selector="addCountry:" destination="BYZ-38-t0r" id="AXw-oT-Sfe"/>
+                                    <segue destination="ywH-6e-rXd" kind="show" id="eGL-uM-SvI"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="trash" id="YPq-lj-6YO">
+                                <connections>
+                                    <segue destination="1iI-mS-bV3" kind="show" id="Fc5-wb-zgU"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="VATAmoutLabel" destination="0eC-XU-DwH" id="Y9W-wu-Uof"/>
-                        <outlet property="VATLabel" destination="BOn-yv-b5z" id="y46-eN-j53"/>
                         <outlet property="pickerView" destination="dPC-gQ-uxK" id="VYP-n8-RHb"/>
                         <outlet property="priceLabel" destination="ral-2a-0U2" id="oDz-cV-Aw8"/>
                         <outlet property="priceSlider" destination="v4V-vB-OnL" id="3ru-6C-zm1"/>
                         <outlet property="totalAmount" destination="L8P-OG-uc7" id="NdI-vn-TKY"/>
+                        <outlet property="vatAmountLabel" destination="0eC-XU-DwH" id="Y9W-wu-Uof"/>
+                        <outlet property="vatLabel" destination="BOn-yv-b5z" id="y46-eN-j53"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="665" y="34"/>
         </scene>
         <!--Title-->
         <scene sceneID="FYJ-BU-cAl">
@@ -222,6 +232,7 @@
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7X9-za-Kod">
                                                     <rect key="frame" x="8" y="4" width="359" height="35.5"/>
                                                     <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
@@ -274,7 +285,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="cancelOutlet" destination="FwO-Nl-CpR" id="hoh-nK-3ui"/>
                         <outlet property="countryText" destination="xir-xL-GeA" id="E8A-DA-4w9"/>
                         <outlet property="doneOutlet" destination="0DX-TZ-Xba" id="4lp-Rp-2Kd"/>
                         <outlet property="validLabel" destination="Gcw-p8-5mn" id="i7b-9m-cqO"/>
@@ -284,6 +294,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YCf-n6-E6s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1421.5999999999999" y="33.733133433283363"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="qgr-XZ-84B">
+            <objects>
+                <tableViewController id="1iI-mS-bV3" customClass="DeleteTableViewController" customModule="ExperimentingWithReactive" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="QNg-DE-OcI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DeleteCell" id="uYC-ds-ol5" userLabel="DeleteCell">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uYC-ds-ol5" id="9cY-Sn-7Wt">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vdd-ml-V6d">
+                                            <rect key="frame" x="16" y="11" width="343" height="22"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Vdd-ml-V6d" firstAttribute="top" secondItem="9cY-Sn-7Wt" secondAttribute="topMargin" id="G3D-Jr-CQo"/>
+                                        <constraint firstItem="Vdd-ml-V6d" firstAttribute="leading" secondItem="9cY-Sn-7Wt" secondAttribute="leadingMargin" id="bQh-7X-Hkn"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Vdd-ml-V6d" secondAttribute="bottom" id="gvK-To-8IL"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Vdd-ml-V6d" secondAttribute="trailing" id="v7u-TT-KPG"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="1iI-mS-bV3" id="9nC-cb-ghQ"/>
+                            <outlet property="delegate" destination="1iI-mS-bV3" id="pF6-0g-CSw"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="csH-wx-Yoy">
+                        <barButtonItem key="rightBarButtonItem" title="Delete" id="vgk-I3-Z31">
+                            <connections>
+                                <action selector="deleteItems:" destination="1iI-mS-bV3" id="zCf-6G-b73"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5EX-un-u82" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2116" y="34"/>
         </scene>
     </scenes>
 </document>

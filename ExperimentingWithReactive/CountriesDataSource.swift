@@ -10,12 +10,33 @@ import UIKit
 
 final class CountriesDataSource: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    var vatCountries = ["India","Japan","Bangladesh","Pakisthan","Brazil","Australia","United States"]
-    var vatValues:[Float] = [25,32.11,35,35,34,28.5,21]
+    private let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
+    var countries = [Country]()
+
+    func addCountry(name:String,vat:Float){
+        let country = Country(entity: Country.entity(), insertInto: context)
+        country.name = name
+        country.vat = vat
+        countries.append(country)
+        appDelegate.saveContext()
+    }
     
-    func addCountry(country: String,with vat: Float){
-        vatCountries.append(country)
-        vatValues.append(vat)
+    func deleteCountry(at row:Int){
+        let obj = countries[row]
+        countries.remove(at: row)
+        context.delete(obj)
+        appDelegate.saveContext()
+    }
+    
+    override init() {
+        super.init()
+        do{
+            countries = try context.fetch(Country.fetchRequest())
+        }catch let error as NSError {
+            print("Could not fetch. \(error),\(error.userInfo)")
+        }
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -23,10 +44,10 @@ final class CountriesDataSource: NSObject, UIPickerViewDelegate, UIPickerViewDat
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return vatCountries.count
+        return countries.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return vatCountries[row]
+        return countries[row].name
     }
 }

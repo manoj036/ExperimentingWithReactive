@@ -12,7 +12,7 @@ import ReactiveSwift
 import Result
 
 protocol AddCountryViewControllerDelegate: class {
-    func onDoneClick(country: String,vat: Float)
+    func onDoneClick(name: String,vat: Float)
 }
 
 
@@ -21,7 +21,6 @@ class AddCountryViewController: UITableViewController {
     @IBOutlet weak var countryText: UITextField!
     @IBOutlet weak var vatText: UITextField!
     @IBOutlet weak var doneOutlet: UIBarButtonItem!
-    @IBOutlet weak var cancelOutlet: UIBarButtonItem!
     @IBOutlet weak var validLabel: UILabel!
     
     weak var delegate: AddCountryViewControllerDelegate?
@@ -33,7 +32,7 @@ class AddCountryViewController: UITableViewController {
     
     @IBAction func doneButton(_ sender: Any) {
         navigationController?.popViewController(animated: true)
-        delegate?.onDoneClick(country: (countryText?.text)!, vat: Float(vatText.text!)!)
+        delegate?.onDoneClick(name: (countryText?.text)!, vat: Float(vatText.text!)!)
     }
  
     override func viewDidLoad() {

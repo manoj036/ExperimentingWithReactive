@@ -12,53 +12,76 @@ import ReactiveSwift
 import Foundation
 import Result
 
-class ViewController: UIViewController {
+class ViewController: UIViewController  {
     
     @IBOutlet weak var priceSlider: UISlider!
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var VATLabel: UILabel!
-    @IBOutlet weak var VATAmoutLabel: UILabel!
+    @IBOutlet weak var vatLabel: UILabel!
+    @IBOutlet weak var vatAmountLabel: UILabel!
     @IBOutlet weak var totalAmount: UILabel!
 
     let countriesDataSource = CountriesDataSource()
-    
+//    var vatCountries = ["India","Japan","Bangladesh","Pakisthan","Brazil","Australia","United States"]
+//    var vatValues:[Float] = [25,32.11,35,35,34,28.5,21]
+//
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         pickerView.dataSource = countriesDataSource
         pickerView.delegate = countriesDataSource
-    
-        //Initial Values of properties
+        
+        //initial values for properties
         let initalPrice = priceSlider.value
-        let initialVAT = countriesDataSource.vatValues[pickerView.selectedRow(inComponent: 0)]
         
-        //Signals for properties
-        let vatSignal = pickerView.reactive.selections
-        let priceSignal = priceSlider.reactive.values
-        
-        //Properties
-        let priceProperty = Property(initial: initalPrice, then: priceSignal)
-        let vatProperty = Property(initial: initialVAT, then: vatSignal.map{(row,_) in self.countriesDataSource.vatValues[row]})
-        let vatValueProperty = Property.combineLatest(priceProperty, vatProperty).map {$0 * $1 / 100}
-        let totalProperty = Property.combineLatest(vatValueProperty, priceProperty).map{$0 + $1}
-        
-        VATLabel.reactive.text <~ vatProperty.map{"\($0)%"}
-        priceLabel.reactive.text <~ priceProperty.map{String($0)}
-        VATAmoutLabel.reactive.text <~ vatValueProperty.map{String($0)}
-        totalAmount.reactive.text <~ totalProperty.map{String($0)}
+        if (pickerView.numberOfRows(inComponent: 0) > 0) {
+            let initialVAT = countriesDataSource.countries[pickerView.selectedRow(inComponent: 0)].vat
+            //Signals for properties
+            let vatSignal = pickerView.reactive.selections
+            let priceSignal = priceSlider.reactive.values
+            
+            //Properties
+            let priceProperty = Property(initial: initalPrice, then: priceSignal)
+            let vatProperty = Property(initial: initialVAT, then: vatSignal.map{(row,_) in self.countriesDataSource.countries[row].vat})
+            let vatValueProperty = Property.combineLatest(priceProperty, vatProperty).map {$0 * $1 / 100}
+            let totalProperty = Property.combineLatest(vatValueProperty, priceProperty).map{$0 + $1}
+            
+            vatLabel.reactive.text <~ vatProperty.map{"\($0)%"}
+            priceLabel.reactive.text <~ priceProperty.map{String($0)}
+            vatAmountLabel.reactive.text <~ vatValueProperty.map{String($0)}
+            totalAmount.reactive.text <~ totalProperty.map{String($0)}
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let nav = segue.destination as? AddCountryViewController{
             nav.delegate = self
         }
+        if let nav = segue.destination as? DeleteTableViewController{
+            nav.delegate = self
+            nav.countriesDataSource = countriesDataSource
+        }
     }
 }
 
 extension ViewController:AddCountryViewControllerDelegate{
-    func onDoneClick(country: String, vat: Float) {
-        countriesDataSource.addCountry(country: country, with: vat)
+    func onDoneClick(name: String, vat: Float) {
+        countriesDataSource.addCountry(name: name, vat: vat)
         pickerView.reloadAllComponents()
     }
 }
+
+extension ViewController:DeleteTableViewControllerDelegate{
+    func deleteItems(at rows: [Int]) {
+        for row in rows{
+            countriesDataSource.deleteCountry(at: row)
+            pickerView.reloadAllComponents()
+        }
+    }
+}
+
